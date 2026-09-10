@@ -1,8 +1,9 @@
 :root {
-  font-family: system-ui, sans-serif;
+  font-family: 'Segoe UI', 'Noto Sans TC', system-ui, sans-serif;
   line-height: 1.5;
-  color: #213547;
-  background: #ffffff;
+  color: #1a1a1a;
+  background: linear-gradient(160deg, #f0f4f8 0%, #e2e8f0 50%, #dbe4ee 100%);
+  min-height: 100vh;
 }
 
 body {
@@ -10,7 +11,26 @@ body {
 }
 
 .app {
-  max-width: 40rem;
+  max-width: 28rem;
   margin: 0 auto;
   padding: 2rem 1.25rem;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.tagline {
+  margin: 0.35rem 0 0;
+  font-size: 0.95rem;
+  color: #4a5568;
+}
+
+.hint {
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  color: #64748b;
 }

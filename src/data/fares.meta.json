@@ -1,0 +1,13 @@
+{
+  "asOf": "2026-09-01",
+  "currency": "HKD",
+  "appliesTo": "港鐵市區綫成人八達通單程（練習用子集）",
+  "appliesToEn": "MTR urban lines adult Octopus single journey (practice subset)",
+  "source": "Hand-curated practice snapshot inspired by published adult Octopus fare levels; not a full official matrix",
+  "notes": [
+    "15 stations only; missing OD pairs must return missing_fare — do not invent amounts",
+    "Tsing Yi is attached to the Tung Chung Line (tung-chung) per product rules",
+    "Interchange stations appear once with multiple lineIds",
+    "Some pairs exist in only one direction (e.g. mong-kok:tsing-yi) to exercise reverse-key lookup in Day2 task B"
+  ]
+}
