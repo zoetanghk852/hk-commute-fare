@@ -1,12 +1,25 @@
-# HK通勤車費查詢
+# HK Transpot Free
 
-Vite + React + TypeScript 專案骨架。
-
-## 指令
+Requires [pnpm](https://pnpm.io/) 11.
 
 ```bash
 pnpm install
 pnpm dev
-pnpm test
-pnpm typecheck
+```
+
+```bash
+pnpm exec playwright install chromium
+```
+
+## Commands
+
+```bash
+pnpm install
+pnpm dev          # local preview
+pnpm test         # unit / component tests (Vitest)
+pnpm test:watch   # watch mode (keep this on for TDD)
+pnpm typecheck    # TypeScript check
+pnpm e2e          # full Playwright suite
+pnpm e2e:smoke    # smoke only (critical path)
+pnpm e2e:ui       # Playwright UI mode
 ```

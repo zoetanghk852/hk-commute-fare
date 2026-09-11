@@ -1,0 +1,254 @@
+[
+  {
+    "id": "central",
+    "nameZh": "中環",
+    "nameEn": "Central",
+    "lineIds": ["island", "tsuen-wan"]
+  },
+  {
+    "id": "admiralty",
+    "nameZh": "金鐘",
+    "nameEn": "Admiralty",
+    "lineIds": ["island", "tsuen-wan", "tseung-kwan-o", "east-rail"]
+  },
+  {
+    "id": "wan-chai",
+    "nameZh": "灣仔",
+    "nameEn": "Wan Chai",
+    "lineIds": ["island"]
+  },
+  {
+    "id": "causeway-bay",
+    "nameZh": "銅鑼灣",
+    "nameEn": "Causeway Bay",
+    "lineIds": ["island"]
+  },
+  {
+    "id": "tsim-sha-tsui",
+    "nameZh": "尖沙咀",
+    "nameEn": "Tsim Sha Tsui",
+    "lineIds": ["tsuen-wan"]
+  },
+  {
+    "id": "mong-kok",
+    "nameZh": "旺角",
+    "nameEn": "Mong Kok",
+    "lineIds": ["tsuen-wan", "kwun-tong"]
+  },
+  {
+    "id": "prince-edward",
+    "nameZh": "太子",
+    "nameEn": "Prince Edward",
+    "lineIds": ["tsuen-wan", "kwun-tong"]
+  },
+  {
+    "id": "kowloon-tong",
+    "nameZh": "九龍塘",
+    "nameEn": "Kowloon Tong",
+    "lineIds": ["kwun-tong", "east-rail"]
+  },
+  {
+    "id": "kwun-tong",
+    "nameZh": "觀塘",
+    "nameEn": "Kwun Tong",
+    "lineIds": ["kwun-tong"]
+  },
+  {
+    "id": "quarry-bay",
+    "nameZh": "鰂魚涌",
+    "nameEn": "Quarry Bay",
+    "lineIds": ["island", "tseung-kwan-o"]
+  },
+  {
+    "id": "tseung-kwan-o",
+    "nameZh": "將軍澳",
+    "nameEn": "Tseung Kwan O",
+    "lineIds": ["tseung-kwan-o"]
+  },
+  {
+    "id": "hong-kong",
+    "nameZh": "香港",
+    "nameEn": "Hong Kong",
+    "lineIds": ["tung-chung"]
+  },
+  {
+    "id": "kowloon",
+    "nameZh": "九龍",
+    "nameEn": "Kowloon",
+    "lineIds": ["tung-chung"]
+  },
+  {
+    "id": "olympic",
+    "nameZh": "奧運",
+    "nameEn": "Olympic",
+    "lineIds": ["tung-chung"]
+  },
+  {
+    "id": "tsing-yi",
+    "nameZh": "青衣",
+    "nameEn": "Tsing Yi",
+    "lineIds": ["tung-chung"]
+  },
+  {
+    "id": "wu-kai-sha",
+    "nameZh": "烏溪沙",
+    "nameEn": "Wu Kai Sha",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "ma-on-shan",
+    "nameZh": "馬鞍山",
+    "nameEn": "Ma On Shan",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "heng-on",
+    "nameZh": "恆安",
+    "nameEn": "Heng On",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "tai-shui-hang",
+    "nameZh": "大水坑",
+    "nameEn": "Tai Shui Hang",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "shek-mun",
+    "nameZh": "石門",
+    "nameEn": "Shek Mun",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "city-one",
+    "nameZh": "第一城",
+    "nameEn": "City One",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "sha-tin-wai",
+    "nameZh": "沙田圍",
+    "nameEn": "Sha Tin Wai",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "che-kung-temple",
+    "nameZh": "車公廟",
+    "nameEn": "Che Kung Temple",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "tai-wai",
+    "nameZh": "大圍",
+    "nameEn": "Tai Wai",
+    "lineIds": ["east-rail", "tuen-ma"]
+  },
+  {
+    "id": "hin-keng",
+    "nameZh": "顯徑",
+    "nameEn": "Hin Keng",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "diamond-hill",
+    "nameZh": "鑽石山",
+    "nameEn": "Diamond Hill",
+    "lineIds": ["kwun-tong", "tuen-ma"]
+  },
+  {
+    "id": "kai-tak",
+    "nameZh": "啟德",
+    "nameEn": "Kai Tak",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "sung-wong-toi",
+    "nameZh": "宋皇臺",
+    "nameEn": "Sung Wong Toi",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "to-kwa-wan",
+    "nameZh": "土瓜灣",
+    "nameEn": "To Kwa Wan",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "ho-man-tin",
+    "nameZh": "何文田",
+    "nameEn": "Ho Man Tin",
+    "lineIds": ["kwun-tong", "tuen-ma"]
+  },
+  {
+    "id": "hung-hom",
+    "nameZh": "紅磡",
+    "nameEn": "Hung Hom",
+    "lineIds": ["east-rail", "tuen-ma"]
+  },
+  {
+    "id": "east-tsim-sha-tsui",
+    "nameZh": "尖東",
+    "nameEn": "East Tsim Sha Tsui",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "austin",
+    "nameZh": "柯士甸",
+    "nameEn": "Austin",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "nam-cheong",
+    "nameZh": "南昌",
+    "nameEn": "Nam Cheong",
+    "lineIds": ["tung-chung", "tuen-ma"]
+  },
+  {
+    "id": "mei-foo",
+    "nameZh": "美孚",
+    "nameEn": "Mei Foo",
+    "lineIds": ["tsuen-wan", "tuen-ma"]
+  },
+  {
+    "id": "tsuen-wan-west",
+    "nameZh": "荃灣西",
+    "nameEn": "Tsuen Wan West",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "kam-sheung-road",
+    "nameZh": "錦上路",
+    "nameEn": "Kam Sheung Road",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "yuen-long",
+    "nameZh": "元朗",
+    "nameEn": "Yuen Long",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "long-ping",
+    "nameZh": "朗屏",
+    "nameEn": "Long Ping",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "tin-shui-wai",
+    "nameZh": "天水圍",
+    "nameEn": "Tin Shui Wai",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "siu-hong",
+    "nameZh": "兆康",
+    "nameEn": "Siu Hong",
+    "lineIds": ["tuen-ma"]
+  },
+  {
+    "id": "tuen-mun",
+    "nameZh": "屯門",
+    "nameEn": "Tuen Mun",
+    "lineIds": ["tuen-ma"]
+  }
+]

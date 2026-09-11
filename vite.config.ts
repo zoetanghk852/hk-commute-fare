@@ -5,7 +5,9 @@ import { defineConfig } from 'vitest/config'
 export default defineConfig({
   plugins: [react()],
   test: {
-    environment: 'node',
-    include: ['src/**/*.test.ts'],
+    // Day3：元件測試需要 DOM。domain 純函式在 jsdom 下也可跑（已驗證全綠）。
+    environment: 'jsdom',
+    include: ['src/**/*.{test,spec}.{ts,tsx}'],
+    setupFiles: ['./src/test/setup.ts'],
   },
 })
