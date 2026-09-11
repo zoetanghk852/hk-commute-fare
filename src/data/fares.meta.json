@@ -1,13 +1,15 @@
 {
-  "asOf": "2026-09-01",
+  "asOf": "2024-06-30",
   "currency": "HKD",
-  "appliesTo": "港鐵市區綫成人八達通單程（練習用子集）",
-  "appliesToEn": "MTR urban lines adult Octopus single journey (practice subset)",
-  "source": "Hand-curated practice snapshot inspired by published adult Octopus fare levels; not a full official matrix",
+  "appliesTo": "港鐵市區綫成人八達通單程",
+  "appliesToEn": "MTR urban lines adult Octopus single journey",
+  "source": "MTR Adult Octopus / Adult QR / Adult Contactless fare chart PDF (adu_chd_ocl_mtr_fare_2024.pdf), offline extract for stations in stations.json",
+  "sourceUrl": "https://www.mtr.com.hk/archive/ch/pdf/fam2024/adu_chd_ocl_mtr_fare_2024.pdf",
   "notes": [
-    "15 stations only; missing OD pairs must return missing_fare — do not invent amounts",
-    "Tsing Yi is attached to the Tung Chung Line (tung-chung) per product rules",
-    "Interchange stations appear once with multiple lineIds",
-    "Some pairs exist in only one direction (e.g. mong-kok:tsing-yi) to exercise reverse-key lookup in Day2 task B"
+    "Effective from 30 June 2024 per MTR published chart",
+    "Matrix covers OD pairs among the 42 stations in stations.json (859/861 undirected pairs)",
+    "Intentionally no fare for Central↔Hong Kong and Tsim Sha Tsui↔East Tsim Sha Tsui (out-of-gate walk transfers; not priced as MTR rides in this chart)",
+    "UI disables destinations with no fare when the other end is already selected",
+    "Regenerate with: py -3 scripts/extract_octopus_fares.py (requires local PDF at %TEMP%\\mtr_octopus_fare_2024.pdf)"
   ]
 }
