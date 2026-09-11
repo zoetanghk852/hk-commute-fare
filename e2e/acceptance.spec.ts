@@ -11,20 +11,21 @@ test.describe('acceptance', () => {
 
   test('en search for adm selects Admiralty', async ({ page }) => {
     await gotoApp(page)
-    await pickBySearch(page, '起點', 'adm', /金鐘|Admiralty/)
-    await expect(page.getByText(/已選：金鐘/)).toBeVisible()
+    await page.getByRole('button', { name: 'English' }).click()
+    await pickBySearch(page, 'Origin', 'adm', /Admiralty/)
+    await expect(page.getByText(/Selected:\s*Admiralty/)).toBeVisible()
   })
 
   test('both stations selected shows HK$', async ({ page }) => {
     await gotoApp(page)
-    await pickBySearch(page, '起點', 'adm', /金鐘|Admiralty/)
+    await pickBySearch(page, '起點', '金', /金鐘/)
     await pickBySearch(page, '終點', '旺', /旺角/)
     await expectStatus(page, /HK\$/)
   })
 
   test('swap keeps fare amount', async ({ page }) => {
     await gotoApp(page)
-    await pickBySearch(page, '起點', 'adm', /金鐘|Admiralty/)
+    await pickBySearch(page, '起點', '金', /金鐘/)
     await pickBySearch(page, '終點', '旺', /旺角/)
     await expectStatus(page, /HK\$13\.2/)
     await page.getByRole('button', { name: '對調起訖' }).click()
@@ -81,7 +82,7 @@ test.describe('acceptance mobile', () => {
 
   test('mobile viewport completes main flow', async ({ page }) => {
     await gotoApp(page)
-    await pickBySearch(page, '起點', 'adm', /金鐘|Admiralty/)
+    await pickBySearch(page, '起點', '金', /金鐘/)
     await pickBySearch(page, '終點', '旺', /旺角/)
     await expectStatus(page, /HK\$13\.2/)
   })

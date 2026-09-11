@@ -49,4 +49,11 @@ describe("searchStations", () => {
       "mong-kok",
     );
   });
+
+  it("respects locale=en (Chinese-only query should not match)", () => {
+    expect(searchStations("旺", stations, "en")).toEqual([]);
+    expect(searchStations("adm", stations, "en").map((s) => s.id)).toContain(
+      "admiralty",
+    );
+  });
 });

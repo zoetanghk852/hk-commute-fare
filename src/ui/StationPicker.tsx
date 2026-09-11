@@ -57,9 +57,13 @@ export function StationPicker({
 
   const keepQueryOnClearRef = useRef(false);
 
+  /** Skip wiping line when clearing selection because the user just chose a line. */
+
+  const keepLineOnClearRef = useRef(false);
+
   const lineIds = [...new Set(stations.flatMap((station) => station.lineIds))].sort();
 
-  const searchHits = searchStations(query, stations);
+  const searchHits = searchStations(query, stations, locale);
 
   const lineStations = lineId ? stations.filter((s) => s.lineIds.includes(lineId)) : [];
 
@@ -82,6 +86,18 @@ export function StationPicker({
     if (!selectedId) {
       if (keepQueryOnClearRef.current) {
         keepQueryOnClearRef.current = false;
+
+        return;
+      }
+
+      if (keepLineOnClearRef.current) {
+        keepLineOnClearRef.current = false;
+
+        setQuery("");
+
+        setListOpen(false);
+
+        setHighlightIndex(-1);
 
         return;
       }
@@ -351,6 +367,7 @@ export function StationPicker({
               nextLine !== "" &&
               !stations.some((s) => s.id === selectedId && s.lineIds.includes(nextLine))
             ) {
+              keepLineOnClearRef.current = true;
               onSelect(null);
             }
 
@@ -378,6 +395,7 @@ export function StationPicker({
               const stationId = e.target.value;
 
               if (stationId === "") {
+                keepLineOnClearRef.current = true;
                 onSelect(null);
 
                 setQuery("");

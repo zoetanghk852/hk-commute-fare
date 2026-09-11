@@ -1,11 +1,16 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi, afterEach } from 'vitest'
 import { fareStatusMessage } from './fareStatusMessage'
+import * as lookupFareModule from '../domain/lookupFare'
 
 const matrix = {
   'admiralty:mong-kok': 9.2,
 }
 
 describe('fareStatusMessage', () => {
+  afterEach(() => {
+    vi.restoreAllMocks()
+  })
+
   it('asks to select stations when incomplete (zh)', () => {
     expect(fareStatusMessage(null, 'mong-kok', matrix, 'zh')).toEqual({
       kind: 'incomplete',
@@ -44,6 +49,22 @@ describe('fareStatusMessage', () => {
     ).toEqual({
       kind: 'missingFare',
       text: 'Fare unavailable for this journey',
+    })
+  })
+
+  it('maps unknown_station to UI copy (not missingFare)', () => {
+    vi.spyOn(lookupFareModule, 'lookupFare').mockReturnValue({
+      ok: false,
+      error: { code: 'unknown_station', message: 'Unknown station' },
+    })
+
+    expect(fareStatusMessage('ghost', 'mong-kok', matrix, 'zh')).toEqual({
+      kind: 'unknownStation',
+      text: '找不到該車站',
+    })
+    expect(fareStatusMessage('ghost', 'mong-kok', matrix, 'en')).toEqual({
+      kind: 'unknownStation',
+      text: 'Unknown station',
     })
   })
 })

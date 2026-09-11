@@ -47,7 +47,7 @@ describe('App fare display', () => {
     const user = userEvent.setup()
     render(<App />)
 
-    await pickBySearch(user, '起點', 'adm', /金鐘|Admiralty/)
+    await pickBySearch(user, '起點', '金', /金鐘|Admiralty/)
     await pickBySearch(user, '終點', '旺', /旺角/)
 
     expect(screen.getByLabelText('起點搜尋')).toHaveValue('金鐘')
@@ -61,7 +61,7 @@ describe('App fare display', () => {
     const user = userEvent.setup()
     render(<App />)
 
-    await pickBySearch(user, '起點', 'adm', /金鐘|Admiralty/)
+    await pickBySearch(user, '起點', '金', /金鐘|Admiralty/)
     await pickBySearch(user, '終點', '旺', /旺角/)
     expect(screen.getByRole('status')).toHaveTextContent('HK$13.2')
 
@@ -78,7 +78,7 @@ describe('App fare display', () => {
     const user = userEvent.setup()
     render(<App />)
 
-    await pickBySearch(user, '起點', 'adm', /金鐘|Admiralty/)
+    await pickBySearch(user, '起點', '金', /金鐘|Admiralty/)
     await user.click(screen.getByRole('button', { name: '對調起訖' }))
 
     expect(screen.getByLabelText('起點搜尋')).toHaveValue('')
@@ -92,7 +92,7 @@ describe('App fare display', () => {
     const user = userEvent.setup()
     render(<App />)
 
-    await pickBySearch(user, '起點', 'adm', /金鐘|Admiralty/)
+    await pickBySearch(user, '起點', '金', /金鐘|Admiralty/)
     await pickBySearch(user, '終點', '旺', /旺角/)
     expect(screen.getByRole('status')).toHaveTextContent('HK$13.2')
 
@@ -178,6 +178,21 @@ describe('App fare display', () => {
     ).toBeInTheDocument()
   })
 
+  it('scopes search to English names when locale is en', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await user.click(screen.getByRole('button', { name: 'English' }))
+
+    await user.type(screen.getByLabelText('Origin search'), '旺')
+    const emptyList = screen.getByRole('listbox', { name: 'Origin search results' })
+    expect(within(emptyList).queryByRole('option')).not.toBeInTheDocument()
+    expect(within(emptyList).getByText('No matching stations')).toBeInTheDocument()
+
+    await user.clear(screen.getByLabelText('Origin search'))
+    await pickBySearch(user, 'Origin', 'adm', /Admiralty/)
+    expect(screen.getByLabelText('Origin search')).toHaveValue('Admiralty')
+  })
+
   it('uses English on first paint when navigator.language is en-US', () => {
     Object.defineProperty(window.navigator, 'language', {
       configurable: true,
@@ -213,12 +228,29 @@ describe('App fare display', () => {
     expect(screen.queryByLabelText('起點選站')).not.toBeInTheDocument()
   })
 
+  it('keeps line choice after clear then reselect, when switching to another line', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    await pickBySearch(user, '起點', '金', /金鐘/)
+    await user.click(screen.getByRole('button', { name: '清除起點' }))
+    await pickBySearch(user, '起點', '旺', /旺角/)
+
+    // Mong Kok is on tsuen-wan / kwun-tong; switching to island should clear
+    // the station but keep the newly chosen line so the station select stays usable.
+    await user.selectOptions(screen.getByLabelText('起點按綫選站'), 'island')
+    expect(screen.getByLabelText('起點按綫選站')).toHaveValue('island')
+    expect(screen.getByLabelText('起點選站')).toBeInTheDocument()
+    expect(screen.getByLabelText('起點選站')).toHaveValue('')
+    expect(screen.getByLabelText('起點搜尋')).toHaveValue('')
+  })
+
   it('selects search hit with ArrowDown and Enter', async () => {
     const user = userEvent.setup()
     render(<App />)
 
     const originSearch = screen.getByLabelText('起點搜尋')
-    await user.type(originSearch, 'adm')
+    await user.type(originSearch, '金')
     await user.keyboard('{ArrowDown}{Enter}')
 
     expect(originSearch).toHaveValue('金鐘')

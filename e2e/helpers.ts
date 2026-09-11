@@ -1,15 +1,18 @@
 import { type Page, expect } from '@playwright/test'
 
-/** Pick a station via search (zh-HK UI). */
+/** Pick a station via search (zh or en UI labels). */
 export async function pickBySearch(
   page: Page,
-  legend: '起點' | '終點',
+  legend: '起點' | '終點' | 'Origin' | 'Destination',
   query: string,
   optionName: RegExp,
 ) {
-  const search = page.getByLabel(`${legend}搜尋`)
+  const isEn = legend === 'Origin' || legend === 'Destination'
+  const searchLabel = isEn ? `${legend} search` : `${legend}搜尋`
+  const listName = isEn ? `${legend} search results` : `${legend}搜尋結果`
+  const search = page.getByLabel(searchLabel)
   await search.fill(query)
-  const listbox = page.getByRole('listbox', { name: `${legend}搜尋結果` })
+  const listbox = page.getByRole('listbox', { name: listName })
   await listbox.getByRole('option', { name: optionName }).click()
 }
 

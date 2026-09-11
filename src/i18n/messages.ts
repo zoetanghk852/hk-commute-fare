@@ -24,6 +24,7 @@ export type MessageKey =
   | 'incomplete'
   | 'sameStation'
   | 'missingFare'
+  | 'unknownStation'
   | 'fareQuery'
   | 'language'
   | 'journeyUnknown'
@@ -53,6 +54,7 @@ const zh = {
   incomplete: '請選擇起訖站',
   sameStation: '起點與終點不可相同',
   missingFare: '無法顯示該程車費',
+  unknownStation: '找不到該車站',
   fareQuery: '車費查詢',
   language: '語言',
   journeyUnknown: '？',
@@ -83,6 +85,7 @@ const en: Record<MessageKey, string> = {
   incomplete: 'Select origin and destination',
   sameStation: 'Origin and destination must differ',
   missingFare: 'Fare unavailable for this journey',
+  unknownStation: 'Unknown station',
   fareQuery: 'Fare lookup',
   language: 'Language',
   journeyUnknown: '?',

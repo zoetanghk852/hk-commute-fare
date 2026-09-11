@@ -13,7 +13,7 @@ test.describe('smoke', () => {
 
   test('select two stations and see fare', async ({ page }) => {
     await gotoApp(page)
-    await pickBySearch(page, '起點', 'adm', /金鐘|Admiralty/)
+    await pickBySearch(page, '起點', '金', /金鐘/)
     await pickBySearch(page, '終點', '旺', /旺角/)
     await expectStatus(page, /HK\$13\.2/)
   })
