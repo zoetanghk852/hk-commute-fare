@@ -1,15 +1,16 @@
 {
-  "asOf": "2024-06-30",
+  "asOf": "2026-09-12",
   "currency": "HKD",
   "appliesTo": "港鐵市區綫成人八達通單程",
   "appliesToEn": "MTR urban lines adult Octopus single journey",
-  "source": "MTR Adult Octopus / Adult QR / Adult Contactless fare chart PDF (adu_chd_ocl_mtr_fare_2024.pdf), offline extract for stations in stations.json",
-  "sourceUrl": "https://www.mtr.com.hk/archive/ch/pdf/fam2024/adu_chd_ocl_mtr_fare_2024.pdf",
+  "source": "MTR open data CSV: mtr_lines_fares.csv (OCT_ADT_FARE) + mtr_lines_and_stations.csv, filtered to stations in stations.json",
+  "sourceUrl": "https://data.gov.hk/tc-data/dataset/mtr-data-routes-fares-barrier-free-facilities",
   "notes": [
-    "Effective from 30 June 2024 per MTR published chart",
-    "Matrix covers OD pairs among the 42 stations in stations.json (859/861 undirected pairs)",
-    "Intentionally no fare for Central↔Hong Kong and Tsim Sha Tsui↔East Tsim Sha Tsui (out-of-gate walk transfers; not priced as MTR rides in this chart)",
-    "UI disables destinations with no fare when the other end is already selected",
-    "Regenerate with: py -3 scripts/extract_octopus_fares.py (requires local PDF at %TEMP%\\mtr_octopus_fare_2024.pdf)"
+    "Regenerated on 2026-09-12 from https://opendata.mtr.com.hk/data/mtr_lines_fares.csv",
+    "Matrix covers OD pairs among the 42 stations in stations.json (859/1718 undirected/directed key pairs as stored)",
+    "Same-station rows (fare 0) are omitted; UI treats same station as an error",
+    "Station ID is mapped to kebab-case slug via English/Chinese names in stations.json",
+    "Regenerate with: pnpm update:fares  (or py -3 scripts/update_fares_from_mtr_csv.py)",
+    "Optional dry-run: py -3 scripts/update_fares_from_mtr_csv.py --dry-run"
   ]
 }

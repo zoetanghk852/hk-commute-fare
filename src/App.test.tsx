@@ -4,6 +4,7 @@
 import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { beforeEach, describe, expect, it } from 'vitest'
+import faresMetaJson from './data/fares.meta.json' with { type: 'json' }
 import App from './App'
 
 beforeEach(() => {
@@ -260,9 +261,9 @@ describe('App fare display', () => {
 
   it('renders data-asof line with the date from fares.meta.json', () => {
     render(<App />)
-    // fares.meta.json has asOf: "2024-06-30"; ensure the footer shows the real date
+    const asOf = (faresMetaJson as { asOf?: string }).asOf ?? '—'
     expect(
-      screen.getByText(/票價資料截至 2024-06-30/),
+      screen.getByText(new RegExp(`票價資料截至 ${asOf}`)),
     ).toBeInTheDocument()
   })
 })

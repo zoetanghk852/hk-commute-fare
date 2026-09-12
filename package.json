@@ -13,7 +13,8 @@
     "typecheck": "tsc -b --pretty false",
     "e2e": "playwright test",
     "e2e:ui": "playwright test --ui",
-    "e2e:smoke": "playwright test e2e/smoke.spec.ts"
+    "e2e:smoke": "playwright test e2e/smoke.spec.ts",
+    "update:fares": "py -3 scripts/update_fares_from_mtr_csv.py"
   },
   "dependencies": {
     "react": "^19.2.8",
