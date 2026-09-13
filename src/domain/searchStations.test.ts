@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { searchStations, type Station } from "./searchStations";
+import {
+  resolveExactRouteId,
+  searchStations,
+  type Station,
+} from "./searchStations";
 
 /** 測試用小站表（不依賴整份 JSON，案例更穩） */
 const stations: Station[] = [
@@ -55,5 +59,42 @@ describe("searchStations", () => {
     expect(searchStations("adm", stations, "en").map((s) => s.id)).toContain(
       "admiralty",
     );
+  });
+
+  it("does not match MTR line slugs via lineIds", () => {
+    expect(searchStations("island", stations)).toEqual([]);
+    expect(searchStations("kwun-tong", stations, "zh")).toEqual([]);
+  });
+
+  it("matches Light Rail route numbers in lineIds", () => {
+    expect(
+      searchStations(
+        "507",
+        [
+          {
+            id: "lr-tin-king",
+            nameZh: "田景",
+            nameEn: "Tin King",
+            lineIds: ["505", "507"],
+          },
+        ],
+        "en",
+      ).map((s) => s.id),
+    ).toContain("lr-tin-king");
+  });
+});
+
+describe("resolveExactRouteId", () => {
+  const routes = ["505", "507", "610", "615P"];
+
+  it("returns the canonical lineId on exact match (case-insensitive)", () => {
+    expect(resolveExactRouteId("507", routes)).toBe("507");
+    expect(resolveExactRouteId("615p", routes)).toBe("615P");
+  });
+
+  it("returns null for partial or unknown queries", () => {
+    expect(resolveExactRouteId("61", routes)).toBeNull();
+    expect(resolveExactRouteId("999", routes)).toBeNull();
+    expect(resolveExactRouteId("island", ["island", "tsuen-wan"])).toBeNull();
   });
 });

@@ -1,0 +1,689 @@
+[
+  {
+    "id": "lr-tuen-mun-ferry-pier",
+    "nameZh": "屯門碼頭",
+    "nameEn": "Tuen Mun Ferry Pier",
+    "lineIds": [
+      "507",
+      "610",
+      "614",
+      "614P",
+      "615",
+      "615P"
+    ]
+  },
+  {
+    "id": "lr-melody-garden",
+    "nameZh": "美樂",
+    "nameEn": "Melody Garden",
+    "lineIds": [
+      "610",
+      "615",
+      "615P"
+    ]
+  },
+  {
+    "id": "lr-butterfly",
+    "nameZh": "蝴蝶",
+    "nameEn": "Butterfly",
+    "lineIds": [
+      "610",
+      "615",
+      "615P"
+    ]
+  },
+  {
+    "id": "lr-light-rail-depot",
+    "nameZh": "輕鐵車廠",
+    "nameEn": "Light Rail Depot",
+    "lineIds": [
+      "610",
+      "615",
+      "615P"
+    ]
+  },
+  {
+    "id": "lr-lung-mun",
+    "nameZh": "龍門",
+    "nameEn": "Lung Mun",
+    "lineIds": [
+      "610",
+      "615",
+      "615P"
+    ]
+  },
+  {
+    "id": "lr-tsing-shan-tsuen",
+    "nameZh": "青山村",
+    "nameEn": "Tsing Shan Tsuen",
+    "lineIds": [
+      "610",
+      "615",
+      "615P"
+    ]
+  },
+  {
+    "id": "lr-tsing-wun",
+    "nameZh": "青雲",
+    "nameEn": "Tsing Wun",
+    "lineIds": [
+      "610",
+      "615",
+      "615P"
+    ]
+  },
+  {
+    "id": "lr-kin-on",
+    "nameZh": "建安",
+    "nameEn": "Kin On",
+    "lineIds": [
+      "505"
+    ]
+  },
+  {
+    "id": "lr-ho-tin",
+    "nameZh": "河田",
+    "nameEn": "Ho Tin",
+    "lineIds": [
+      "507",
+      "751"
+    ]
+  },
+  {
+    "id": "lr-choy-yee-bridge",
+    "nameZh": "蔡意橋",
+    "nameEn": "Choy Yee Bridge",
+    "lineIds": [
+      "507",
+      "751"
+    ]
+  },
+  {
+    "id": "lr-affluence",
+    "nameZh": "澤豐",
+    "nameEn": "Affluence",
+    "lineIds": [
+      "610",
+      "751"
+    ]
+  },
+  {
+    "id": "lr-tuen-mun-hospital",
+    "nameZh": "屯門醫院",
+    "nameEn": "Tuen Mun Hospital",
+    "lineIds": [
+      "610",
+      "751"
+    ]
+  },
+  {
+    "id": "lr-siu-hong",
+    "nameZh": "兆康",
+    "nameEn": "Siu Hong",
+    "lineIds": [
+      "505",
+      "610",
+      "614",
+      "614P",
+      "615",
+      "615P",
+      "751"
+    ],
+    "mtrInterchangeId": "siu-hong"
+  },
+  {
+    "id": "lr-kei-lun",
+    "nameZh": "麒麟",
+    "nameEn": "Kei Lun",
+    "lineIds": [
+      "505",
+      "615P"
+    ]
+  },
+  {
+    "id": "lr-ching-chung",
+    "nameZh": "青松",
+    "nameEn": "Ching Chung",
+    "lineIds": [
+      "505",
+      "615",
+      "615P"
+    ]
+  },
+  {
+    "id": "lr-kin-sang",
+    "nameZh": "建生",
+    "nameEn": "Kin Sang",
+    "lineIds": [
+      "505",
+      "615",
+      "615P"
+    ]
+  },
+  {
+    "id": "lr-tin-king",
+    "nameZh": "田景",
+    "nameEn": "Tin King",
+    "lineIds": [
+      "505",
+      "507",
+      "615",
+      "615P"
+    ]
+  },
+  {
+    "id": "lr-leung-king",
+    "nameZh": "良景",
+    "nameEn": "Leung King",
+    "lineIds": [
+      "505",
+      "507",
+      "615",
+      "615P"
+    ]
+  },
+  {
+    "id": "lr-san-wai",
+    "nameZh": "新圍",
+    "nameEn": "San Wai",
+    "lineIds": [
+      "505",
+      "507",
+      "615",
+      "615P"
+    ]
+  },
+  {
+    "id": "lr-shek-pai",
+    "nameZh": "石排",
+    "nameEn": "Shek Pai",
+    "lineIds": [
+      "505",
+      "610",
+      "615",
+      "615P"
+    ]
+  },
+  {
+    "id": "lr-shan-king-north",
+    "nameZh": "山景(北)",
+    "nameEn": "Shan King (North)",
+    "lineIds": [
+      "505"
+    ]
+  },
+  {
+    "id": "lr-shan-king-south",
+    "nameZh": "山景(南)",
+    "nameEn": "Shan King (South)",
+    "lineIds": [
+      "505"
+    ]
+  },
+  {
+    "id": "lr-ming-kum",
+    "nameZh": "鳴琴",
+    "nameEn": "Ming Kum",
+    "lineIds": [
+      "505",
+      "610",
+      "615",
+      "615P"
+    ]
+  },
+  {
+    "id": "lr-tai-hing-north",
+    "nameZh": "大興(北)",
+    "nameEn": "Tai Hing (North)",
+    "lineIds": [
+      "507",
+      "610"
+    ]
+  },
+  {
+    "id": "lr-tai-hing-south",
+    "nameZh": "大興(南)",
+    "nameEn": "Tai Hing (South)",
+    "lineIds": [
+      "507",
+      "610"
+    ]
+  },
+  {
+    "id": "lr-ngan-wai",
+    "nameZh": "銀圍",
+    "nameEn": "Ngan Wai",
+    "lineIds": [
+      "507",
+      "610"
+    ]
+  },
+  {
+    "id": "lr-siu-hei",
+    "nameZh": "兆禧",
+    "nameEn": "Siu Hei",
+    "lineIds": [
+      "507",
+      "614",
+      "614P"
+    ]
+  },
+  {
+    "id": "lr-hoi-wong-road",
+    "nameZh": "海皇路",
+    "nameEn": "Hoi Wong Road",
+    "lineIds": [
+      "507",
+      "614",
+      "614P"
+    ]
+  },
+  {
+    "id": "lr-goodview-garden",
+    "nameZh": "豐景園",
+    "nameEn": "Goodview Garden",
+    "lineIds": [
+      "507",
+      "614",
+      "614P"
+    ]
+  },
+  {
+    "id": "lr-siu-lun",
+    "nameZh": "兆麟",
+    "nameEn": "Siu Lun",
+    "lineIds": [
+      "505",
+      "507",
+      "614",
+      "614P"
+    ]
+  },
+  {
+    "id": "lr-on-ting",
+    "nameZh": "安定",
+    "nameEn": "On Ting",
+    "lineIds": [
+      "505",
+      "507",
+      "614",
+      "614P",
+      "751"
+    ]
+  },
+  {
+    "id": "lr-yau-oi",
+    "nameZh": "友愛",
+    "nameEn": "Yau Oi",
+    "lineIds": [
+      "751"
+    ]
+  },
+  {
+    "id": "lr-town-centre",
+    "nameZh": "市中心",
+    "nameEn": "Town Centre",
+    "lineIds": [
+      "505",
+      "507",
+      "614",
+      "614P",
+      "751"
+    ]
+  },
+  {
+    "id": "lr-tuen-mun",
+    "nameZh": "屯門",
+    "nameEn": "Tuen Mun",
+    "lineIds": [
+      "505",
+      "507",
+      "751"
+    ],
+    "mtrInterchangeId": "tuen-mun",
+    "lat": 22.395,
+    "lng": 113.973
+  },
+  {
+    "id": "lr-pui-to",
+    "nameZh": "杯渡",
+    "nameEn": "Pui To",
+    "lineIds": [
+      "614",
+      "614P"
+    ]
+  },
+  {
+    "id": "lr-hoh-fuk-tong",
+    "nameZh": "何福堂",
+    "nameEn": "Hoh Fuk Tong",
+    "lineIds": [
+      "614",
+      "614P"
+    ]
+  },
+  {
+    "id": "lr-san-hui",
+    "nameZh": "新墟",
+    "nameEn": "San Hui",
+    "lineIds": [
+      "614",
+      "614P"
+    ]
+  },
+  {
+    "id": "lr-prime-view",
+    "nameZh": "景峰",
+    "nameEn": "Prime View",
+    "lineIds": [
+      "614",
+      "614P"
+    ]
+  },
+  {
+    "id": "lr-fung-tei",
+    "nameZh": "鳳地",
+    "nameEn": "Fung Tei",
+    "lineIds": [
+      "614",
+      "614P"
+    ]
+  },
+  {
+    "id": "lr-lam-tei",
+    "nameZh": "藍地",
+    "nameEn": "Lam Tei",
+    "lineIds": [
+      "610",
+      "614",
+      "615",
+      "751"
+    ]
+  },
+  {
+    "id": "lr-nai-wai",
+    "nameZh": "泥圍",
+    "nameEn": "Nai Wai",
+    "lineIds": [
+      "610",
+      "614",
+      "615",
+      "751"
+    ]
+  },
+  {
+    "id": "lr-chung-uk-tsuen",
+    "nameZh": "鍾屋村",
+    "nameEn": "Chung Uk Tsuen",
+    "lineIds": [
+      "610",
+      "614",
+      "615",
+      "751"
+    ]
+  },
+  {
+    "id": "lr-hung-shui-kiu",
+    "nameZh": "洪水橋",
+    "nameEn": "Hung Shui Kiu",
+    "lineIds": [
+      "610",
+      "614",
+      "615",
+      "751"
+    ]
+  },
+  {
+    "id": "lr-tong-fong-tsuen",
+    "nameZh": "塘坊村",
+    "nameEn": "Tong Fong Tsuen",
+    "lineIds": [
+      "610",
+      "614",
+      "615",
+      "761P"
+    ]
+  },
+  {
+    "id": "lr-ping-shan",
+    "nameZh": "屏山",
+    "nameEn": "Ping Shan",
+    "lineIds": [
+      "610",
+      "614",
+      "615",
+      "761P"
+    ]
+  },
+  {
+    "id": "lr-hang-mei-tsuen",
+    "nameZh": "坑尾村",
+    "nameEn": "Hang Mei Tsuen",
+    "lineIds": [
+      "751",
+      "761P"
+    ]
+  },
+  {
+    "id": "lr-tin-shui-wai",
+    "nameZh": "天水圍",
+    "nameEn": "Tin Shui Wai",
+    "lineIds": [
+      "705",
+      "706",
+      "751"
+    ],
+    "mtrInterchangeId": "tin-shui-wai"
+  },
+  {
+    "id": "lr-tin-tsz",
+    "nameZh": "天慈",
+    "nameEn": "Tin Tsz",
+    "lineIds": [
+      "705",
+      "706",
+      "751"
+    ]
+  },
+  {
+    "id": "lr-tin-yiu",
+    "nameZh": "天耀",
+    "nameEn": "Tin Yiu",
+    "lineIds": [
+      "705",
+      "706",
+      "761P"
+    ]
+  },
+  {
+    "id": "lr-locwood",
+    "nameZh": "樂湖",
+    "nameEn": "Locwood",
+    "lineIds": [
+      "705",
+      "706",
+      "761P"
+    ]
+  },
+  {
+    "id": "lr-tin-wu",
+    "nameZh": "天湖",
+    "nameEn": "Tin Wu",
+    "lineIds": [
+      "705",
+      "706",
+      "751"
+    ]
+  },
+  {
+    "id": "lr-ginza",
+    "nameZh": "銀座",
+    "nameEn": "Ginza",
+    "lineIds": [
+      "705",
+      "706",
+      "751"
+    ]
+  },
+  {
+    "id": "lr-tin-shui",
+    "nameZh": "天瑞",
+    "nameEn": "Tin Shui",
+    "lineIds": [
+      "705",
+      "706",
+      "761P"
+    ]
+  },
+  {
+    "id": "lr-chung-fu",
+    "nameZh": "頌富",
+    "nameEn": "Chung Fu",
+    "lineIds": [
+      "705",
+      "706",
+      "751",
+      "761P"
+    ]
+  },
+  {
+    "id": "lr-tin-fu",
+    "nameZh": "天富",
+    "nameEn": "Tin Fu",
+    "lineIds": [
+      "705",
+      "706",
+      "751",
+      "761P"
+    ]
+  },
+  {
+    "id": "lr-chestwood",
+    "nameZh": "翠湖",
+    "nameEn": "Chestwood",
+    "lineIds": [
+      "751"
+    ]
+  },
+  {
+    "id": "lr-tin-wing",
+    "nameZh": "天榮",
+    "nameEn": "Tin Wing",
+    "lineIds": [
+      "705",
+      "706",
+      "751"
+    ]
+  },
+  {
+    "id": "lr-tin-yuet",
+    "nameZh": "天悅",
+    "nameEn": "Tin Yuet",
+    "lineIds": [
+      "705",
+      "706"
+    ]
+  },
+  {
+    "id": "lr-tin-sau",
+    "nameZh": "天秀",
+    "nameEn": "Tin Sau",
+    "lineIds": [
+      "705",
+      "706"
+    ]
+  },
+  {
+    "id": "lr-wetland-park",
+    "nameZh": "濕地公園",
+    "nameEn": "Wetland Park",
+    "lineIds": [
+      "705",
+      "706"
+    ]
+  },
+  {
+    "id": "lr-tin-heng",
+    "nameZh": "天恒",
+    "nameEn": "Tin Heng",
+    "lineIds": [
+      "705",
+      "706"
+    ]
+  },
+  {
+    "id": "lr-tin-yat",
+    "nameZh": "天逸",
+    "nameEn": "Tin Yat",
+    "lineIds": [
+      "705",
+      "706",
+      "751",
+      "761P"
+    ]
+  },
+  {
+    "id": "lr-shui-pin-wai",
+    "nameZh": "水邊圍",
+    "nameEn": "Shui Pin Wai",
+    "lineIds": [
+      "610",
+      "614",
+      "615",
+      "761P"
+    ]
+  },
+  {
+    "id": "lr-fung-nin-road",
+    "nameZh": "豐年路",
+    "nameEn": "Fung Nin Road",
+    "lineIds": [
+      "610",
+      "614",
+      "615",
+      "761P"
+    ]
+  },
+  {
+    "id": "lr-hong-lok-road",
+    "nameZh": "康樂路",
+    "nameEn": "Hong Lok Road",
+    "lineIds": [
+      "610",
+      "614",
+      "615",
+      "761P"
+    ]
+  },
+  {
+    "id": "lr-tai-tong-road",
+    "nameZh": "大棠路",
+    "nameEn": "Tai Tong Road",
+    "lineIds": [
+      "610",
+      "614",
+      "615",
+      "761P"
+    ]
+  },
+  {
+    "id": "lr-yuen-long",
+    "nameZh": "元朗",
+    "nameEn": "Yuen Long",
+    "lineIds": [
+      "610",
+      "614",
+      "615",
+      "761P"
+    ],
+    "mtrInterchangeId": "yuen-long"
+  },
+  {
+    "id": "lr-sam-shing",
+    "nameZh": "三聖",
+    "nameEn": "Sam Shing",
+    "lineIds": [
+      "505"
+    ]
+  }
+]

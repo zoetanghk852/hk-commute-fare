@@ -1,0 +1,18 @@
+{
+  "asOf": "2026-09-12",
+  "currency": "HKD",
+  "appliesTo": "輕鐵成人八達通單程",
+  "appliesToEn": "Light Rail adult Octopus single journey",
+  "source": "MTR open data CSV: light_rail_fares.csv (fare_octo_adult) + light_rail_routes_and_stops.csv",
+  "sourceUrl": "https://data.gov.hk/tc-data/dataset/mtr-data-routes-fares-barrier-free-facilities",
+  "mtrLrFreeAdultMax": 5.4,
+  "notes": [
+    "Regenerated on 2026-09-12 from https://opendata.mtr.com.hk/data/light_rail_fares.csv",
+    "Full network: 68 stops, 4556 directed adult Octopus OD keys",
+    "Route numbers: 11 Line Codes in light-rail-routes.json (Direction 1 order)",
+    "Same-station rows (fare 0) omitted; UI treats same station as an error",
+    "mtr_lr_free applies when Light Rail adult fare ≤ $5.4",
+    "Regenerate with: py -3 scripts/update_light_rail_from_mtr_csv.py",
+    "Optional dry-run: py -3 scripts/update_light_rail_from_mtr_csv.py --dry-run"
+  ]
+}

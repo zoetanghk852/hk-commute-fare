@@ -1,0 +1,30 @@
+[
+  {
+    "id": "fs-admiralty",
+    "nameZh": "金鐘（特惠站）",
+    "nameEn": "Admiralty (Fare Saver)",
+    "mtrStationId": "admiralty",
+    "location": "金鐘站 L1 出口旁"
+  },
+  {
+    "id": "fs-central",
+    "nameZh": "中環（特惠站）",
+    "nameEn": "Central (Fare Saver)",
+    "mtrStationId": "central",
+    "location": "中環站 D 出口對面"
+  },
+  {
+    "id": "fs-mong-kok",
+    "nameZh": "旺角（特惠站）",
+    "nameEn": "Mong Kok (Fare Saver)",
+    "mtrStationId": "mong-kok",
+    "location": "旺角站 C3 出口附近"
+  },
+  {
+    "id": "fs-hung-hom",
+    "nameZh": "紅磡（特惠站）",
+    "nameEn": "Hung Hom (Fare Saver)",
+    "mtrStationId": "hung-hom",
+    "location": "紅磡站 B 出口"
+  }
+]

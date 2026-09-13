@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { gotoApp, pickBySearch, expectStatus } from './helpers'
+import { gotoApp, pickBySearch, expectStatus, expectBreakdownFare } from './helpers'
 
 test.describe('acceptance', () => {
   test('zh search for 旺 selects Mong Kok', async ({ page }) => {
@@ -20,18 +20,18 @@ test.describe('acceptance', () => {
     await gotoApp(page)
     await pickBySearch(page, '起點', '金', /金鐘/)
     await pickBySearch(page, '終點', '旺', /旺角/)
-    await expectStatus(page, /HK\$/)
+    await expectBreakdownFare(page, /HK\$/)
   })
 
   test('swap keeps fare amount', async ({ page }) => {
     await gotoApp(page)
     await pickBySearch(page, '起點', '金', /金鐘/)
     await pickBySearch(page, '終點', '旺', /旺角/)
-    await expectStatus(page, /HK\$13\.2/)
+    await expectBreakdownFare(page, /HK\$13\.2/)
     await page.getByRole('button', { name: '對調起訖' }).click()
     await expect(page.getByLabel('起點搜尋')).toHaveValue('旺角')
     await expect(page.getByLabel('終點搜尋')).toHaveValue('金鐘')
-    await expectStatus(page, /HK\$13\.2/)
+    await expectBreakdownFare(page, /HK\$13\.2/)
   })
 
   test('same station shows error without HK$0', async ({ page }) => {
@@ -84,6 +84,78 @@ test.describe('acceptance mobile', () => {
     await gotoApp(page)
     await pickBySearch(page, '起點', '金', /金鐘/)
     await pickBySearch(page, '終點', '旺', /旺角/)
-    await expectStatus(page, /HK\$13\.2/)
+    await expectBreakdownFare(page, /HK\$13\.2/)
+  })
+})
+
+// ── Day5 acceptance: two legs, early bird, fare-saver, map ───────────────────
+
+test.describe('Day5 acceptance: multi-leg & early bird', () => {
+  test('add second leg section is revealed and can be removed', async ({ page }) => {
+    await gotoApp(page)
+    const addBtn = page.getByRole('button', { name: /加入第二程/ })
+    await expect(addBtn).toBeVisible()
+    await addBtn.click()
+
+    const leg2Section = page.getByRole('region', { name: '第二程' })
+    await expect(leg2Section).toBeVisible()
+
+    // Light Rail mode should be active (auto-switched when leg1=MTR)
+    await expect(leg2Section.getByRole('button', { name: /輕鐵（LR）/ })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    )
+
+    // Bus is disabled in both legs
+    const busBtns = page.getByRole('button', { name: /巴士／小巴/ })
+    for (const btn of await busBtns.all()) {
+      await expect(btn).toBeDisabled()
+    }
+
+    await page.getByRole('button', { name: /移除第二程/ }).click()
+    await expect(leg2Section).not.toBeVisible()
+  })
+
+  test('early bird checkbox → earlyBirdDiscount visible in breakdown', async ({ page }) => {
+    await gotoApp(page)
+    await pickBySearch(page, '起點', '金', /金鐘/)
+    await pickBySearch(page, '終點', '旺', /旺角/)
+
+    const breakdown = page.getByRole('region', { name: '車費分項' })
+    await expect(breakdown).toBeVisible()
+
+    // No early bird row initially
+    await expect(breakdown.getByText(/早晨折扣（25%）/)).not.toBeVisible()
+
+    await page.getByRole('checkbox', { name: /早晨折扣/ }).check()
+    await expect(breakdown.getByText(/早晨折扣（25%）/)).toBeVisible()
+    await expect(breakdown.getByText(/估計應付/)).toBeVisible()
+
+    // Estimated payable = 13.2 * 0.75 = 9.9 (also appears as afterEarlyBird dd)
+    await expect(breakdown.getByRole('strong').filter({ hasText: /HK\$9\.9/ })).toBeVisible()
+  })
+
+  test('official vs personal labels in breakdown', async ({ page }) => {
+    await gotoApp(page)
+    await pickBySearch(page, '起點', '金', /金鐘/)
+    await pickBySearch(page, '終點', '旺', /旺角/)
+
+    const breakdown = page.getByRole('region', { name: '車費分項' })
+    // Official label on subtotal
+    await expect(breakdown.getByText('官方')).toBeVisible()
+
+    // Set personal % to 10
+    await page.getByLabel(/個人優惠/).fill('10')
+    await expect(breakdown.getByText('個人估算')).toBeVisible()
+  })
+
+  test('navigate to fare-saver page', async ({ page }) => {
+    await gotoApp(page)
+    await page.getByRole('link', { name: '港鐵特惠站' }).click()
+    await expect(page).toHaveURL(/#\/fare-saver/)
+    await expect(page.getByRole('heading', { name: /特惠站/ })).toBeVisible()
+    await expect(page.getByRole('note')).toContainText('不自動扣減')
+    // Stations table is present
+    await expect(page.getByRole('table')).toBeVisible()
   })
 })

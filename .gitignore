@@ -28,9 +28,6 @@ dist-ssr
 /playwright-report/
 /blob-report/
 /playwright/.cache/
-docs/bug-lessons.md
-docs/manual-checklist-day4.md
-docs/notes-summary.md
-docs/PRD.md
-docs/README.md
-docs/testing-behaviors-day1-day2.md
+
+# Keep all docs local (not pushed to remote)
+/docs/

@@ -1,6 +1,10 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
 
-import { searchStations, type Station } from "../domain/searchStations";
+import {
+  resolveExactRouteId,
+  searchStations,
+  type Station,
+} from "../domain/searchStations";
 
 import { stationPrimaryName, stationSecondaryName, t, type Locale } from "../i18n/messages";
 
@@ -20,7 +24,54 @@ type StationPickerProps = {
   /** When false, station appears disabled and cannot be committed. Default: all selectable. */
 
   isSelectable?: (stationId: string) => boolean;
+
+  /** Optional per-line stop order (e.g. Light Rail Direction 1 sequences). */
+  lineStopOrders?: Record<string, string[]>;
+
+  /** Override search input placeholder (e.g. Light Rail route-number hint). */
+  searchPlaceholder?: string;
 };
+
+const LINE_ID_SORT_RE = /^(\d+)(.*)$/;
+
+/** Natural sort for numeric route codes (505, 507, 610, 615P). */
+export function compareLineIds(a: string, b: string): number {
+  const ma = LINE_ID_SORT_RE.exec(a);
+  const mb = LINE_ID_SORT_RE.exec(b);
+  if (ma && mb) {
+    const na = Number(ma[1]);
+    const nb = Number(mb[1]);
+    if (na !== nb) return na - nb;
+    return (ma[2] ?? "").localeCompare(mb[2] ?? "");
+  }
+  if (ma) return -1;
+  if (mb) return 1;
+  return a.localeCompare(b);
+}
+
+function orderStationsOnLine(
+  stations: Station[],
+  lineId: string,
+  lineStopOrders?: Record<string, string[]>,
+): Station[] {
+  const onLine = stations.filter((s) => s.lineIds.includes(lineId));
+  const order = lineStopOrders?.[lineId];
+  if (!order || order.length === 0) return onLine;
+
+  const byId = new Map(onLine.map((s) => [s.id, s]));
+  const ordered: Station[] = [];
+  for (const id of order) {
+    const station = byId.get(id);
+    if (station) {
+      ordered.push(station);
+      byId.delete(id);
+    }
+  }
+  for (const station of onLine) {
+    if (byId.has(station.id)) ordered.push(station);
+  }
+  return ordered;
+}
 
 function joinLabel(legend: string, part: string, locale: Locale): string {
   return locale === "en" ? `${legend} ${part}` : `${legend}${part}`;
@@ -38,6 +89,10 @@ export function StationPicker({
   locale,
 
   isSelectable = () => true,
+
+  lineStopOrders,
+
+  searchPlaceholder,
 }: StationPickerProps) {
   const [query, setQuery] = useState("");
 
@@ -61,11 +116,20 @@ export function StationPicker({
 
   const keepLineOnClearRef = useRef(false);
 
-  const lineIds = [...new Set(stations.flatMap((station) => station.lineIds))].sort();
+  const lineIds = [...new Set(stations.flatMap((station) => station.lineIds))].sort(
+    compareLineIds,
+  );
+
+  /** Single-line dataset: skip line pick, list stations directly. */
+  const singleLineId = lineIds.length === 1 ? lineIds[0]! : null;
+
+  const activeLineId = singleLineId ?? lineId;
 
   const searchHits = searchStations(query, stations, locale);
 
-  const lineStations = lineId ? stations.filter((s) => s.lineIds.includes(lineId)) : [];
+  const lineStations = activeLineId
+    ? orderStationsOnLine(stations, activeLineId, lineStopOrders)
+    : [];
 
   const lineStationValue =
     selectedId && lineStations.some((s) => s.id === selectedId) ? selectedId : "";
@@ -78,7 +142,8 @@ export function StationPicker({
 
   const showSearchList = listOpen && query.trim() !== "";
 
-  const canReset = query !== "" || lineId !== "" || selectedId !== null;
+  const canReset =
+    query !== "" || (!singleLineId && lineId !== "") || selectedId !== null;
 
   // Sync search/line UI when selectedId changes (swap, commit, clear).
 
@@ -256,7 +321,7 @@ export function StationPicker({
         aria-controls={listboxId}
         aria-activedescendant={activeOptionId}
         value={query}
-        placeholder={t(locale, "searchPlaceholder")}
+        placeholder={searchPlaceholder ?? t(locale, "searchPlaceholder")}
         autoComplete="off"
         onChange={(e) => {
           const next = e.target.value;
@@ -268,21 +333,35 @@ export function StationPicker({
           }
 
           setQuery(next);
+          setHighlightIndex(-1);
+
+          // Light Rail: exact route number → select line dropdown, then pick station.
+          const matchedRoute = resolveExactRouteId(next, lineIds);
+          if (matchedRoute) {
+            setLineId(matchedRoute);
+            setListOpen(false);
+
+            if (selectedId) {
+              keepQueryOnClearRef.current = true;
+              onSelect(null);
+            }
+
+            return;
+          }
 
           setListOpen(true);
-
           setLineId("");
-
-          setHighlightIndex(-1);
 
           if (selectedId) {
             keepQueryOnClearRef.current = true;
-
             onSelect(null);
           }
         }}
         onFocus={() => {
-          if (query.trim() !== "") setListOpen(true);
+          if (query.trim() === "") return;
+          // Exact route number keeps the line/station dropdowns; no combobox list.
+          if (resolveExactRouteId(query, lineIds)) return;
+          setListOpen(true);
         }}
         onKeyDown={onSearchKeyDown}
       />
@@ -342,55 +421,60 @@ export function StationPicker({
         </ul>
       )}
 
-      <label className="field-label" htmlFor={lineSelectId}>
-        {byLineLabel}
+      <label
+        className="field-label"
+        htmlFor={singleLineId ? stationSelectId : lineSelectId}
+      >
+        {singleLineId ? stationAria : byLineLabel}
       </label>
 
       <div className="line-station-row">
-        <select
-          id={lineSelectId}
-          className="field-input"
-          value={lineId}
-          onChange={(e) => {
-            const nextLine = e.target.value;
+        {!singleLineId && (
+          <select
+            id={lineSelectId}
+            className="field-input"
+            value={lineId}
+            onChange={(e) => {
+              const nextLine = e.target.value;
 
-            setLineId(nextLine);
+              setLineId(nextLine);
 
-            setQuery("");
+              setQuery("");
 
-            setListOpen(false);
+              setListOpen(false);
 
-            setHighlightIndex(-1);
+              setHighlightIndex(-1);
 
-            if (
-              selectedId &&
-              nextLine !== "" &&
-              !stations.some((s) => s.id === selectedId && s.lineIds.includes(nextLine))
-            ) {
-              keepLineOnClearRef.current = true;
-              onSelect(null);
-            }
+              if (
+                selectedId &&
+                nextLine !== "" &&
+                !stations.some((s) => s.id === selectedId && s.lineIds.includes(nextLine))
+              ) {
+                keepLineOnClearRef.current = true;
+                onSelect(null);
+              }
 
-            if (nextLine === "") {
-              onSelect(null);
-            }
-          }}
-        >
-          <option value="">{t(locale, "selectLine")}</option>
+              if (nextLine === "") {
+                onSelect(null);
+              }
+            }}
+          >
+            <option value="">{t(locale, "selectLine")}</option>
 
-          {lineIds.map((id) => (
-            <option key={id} value={id}>
-              {lineLabel(id, locale)}
-            </option>
-          ))}
-        </select>
+            {lineIds.map((id) => (
+              <option key={id} value={id}>
+                {lineLabel(id, locale)}
+              </option>
+            ))}
+          </select>
+        )}
 
-        {lineId !== "" && (
+        {activeLineId !== "" && (
           <select
             id={stationSelectId}
             className="field-input"
             value={lineStationValue}
-            aria-label={stationAria}
+            aria-label={singleLineId ? undefined : stationAria}
             onChange={(e) => {
               const stationId = e.target.value;
 

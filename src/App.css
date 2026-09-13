@@ -352,3 +352,424 @@ body {
     padding-top: 2.5rem;
   }
 }
+
+/* ── Navigation ── */
+.app-nav {
+  display: flex;
+  gap: 0;
+  max-width: 26rem;
+  margin: 0 auto;
+  padding: 0 1.15rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-link {
+  padding: 0.65rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.nav-link:hover {
+  color: var(--ink);
+}
+
+.nav-link.is-active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ── Mode selector ── */
+.mode-selector {
+  margin: 0;
+  padding: 0.75rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+.mode-selector .slot-label {
+  display: block;
+  margin: 0 0 0.45rem;
+  padding: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+}
+
+.mode-btn-group {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.mode-btn {
+  margin: 0;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 0.3rem;
+  background: #fff;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.mode-btn.is-active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: #e8f5ef;
+}
+
+.mode-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Add / remove leg ── */
+.add-leg-btn {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px dashed var(--accent);
+  border-radius: 0.35rem;
+  background: transparent;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--accent);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.add-leg-btn:hover,
+.add-leg-btn:focus-visible {
+  background: #e8f5ef;
+}
+
+.second-leg-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.leg-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.second-leg-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.leg-drag-handle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.3rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1;
+  letter-spacing: -0.12em;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+.leg-drag-handle:hover,
+.leg-drag-handle:focus-visible {
+  color: var(--ink);
+  background: rgba(0, 0, 0, 0.04);
+  outline: none;
+}
+
+.leg-drag-handle:active {
+  cursor: grabbing;
+}
+
+.leg-drag-handle.is-disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.panel.is-dragging {
+  opacity: 0.55;
+}
+
+.panel.is-drop-target {
+  outline: 2px dashed var(--accent);
+  outline-offset: 4px;
+}
+
+.swap-legs-btn {
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 0.3rem;
+  background: transparent;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.swap-legs-btn:hover,
+.swap-legs-btn:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+  outline: none;
+}
+
+.swap-legs-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.remove-leg-btn {
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 0.3rem;
+  background: #fff;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.remove-leg-btn:hover {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+/* ── Interchange note ── */
+.interchange-note {
+  margin: 0;
+  padding: 0.45rem 0.65rem;
+  border-radius: 0.3rem;
+  background: #f0faf5;
+  font-size: 0.875rem;
+  color: var(--ink);
+}
+
+.interchange-label {
+  color: var(--muted);
+  font-weight: 500;
+  margin-right: 0.3em;
+}
+
+.interchange-warning {
+  background: #fff8e1;
+  color: #b45309;
+}
+
+/* ── Modifiers (early bird + personal %) ── */
+.modifiers-panel {
+  padding: 0.75rem 0;
+}
+
+.early-bird-label {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.early-bird-label input[type='checkbox'] {
+  margin-top: 0.1rem;
+  accent-color: var(--accent);
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.personal-pct-label {
+  display: block;
+  margin: 0.75rem 0 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.personal-pct-input {
+  width: 6rem;
+}
+
+.modifier-note {
+  margin: 0.25rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.modifier-note a,
+.interchange-explain a {
+  color: var(--accent, #1d4ed8);
+}
+
+.interchange-explain {
+  margin-bottom: 0.75rem;
+}
+
+/* ── Fare breakdown ── */
+.breakdown-panel {
+  padding: 0.75rem 0;
+}
+
+.interchange-badge {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.interchange-badge.is-applicable {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.interchange-badge.is-not-applicable {
+  background: #f1f5f9;
+  color: var(--muted);
+}
+
+.fare-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+}
+
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.breakdown-row:last-child {
+  border-bottom: 0;
+}
+
+.breakdown-row dt {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  color: var(--ink);
+}
+
+.breakdown-row dd {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.breakdown-row.discount dt,
+.breakdown-row.discount dd {
+  color: var(--accent);
+}
+
+.breakdown-row.total dt,
+.breakdown-row.total dd {
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding-top: 0.25rem;
+}
+
+.badge-official {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  background: #e0f2fe;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #0369a1;
+  letter-spacing: 0.04em;
+}
+
+.badge-personal {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  background: #fef3c7;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #92400e;
+  letter-spacing: 0.04em;
+}
+
+/* ── Fare saver page ── */
+.fare-saver-disclaimer {
+  padding: 0.75rem;
+  border-radius: 0.4rem;
+  background: #fff8e1;
+  border-left: 3px solid #f59e0b;
+}
+
+.fare-saver-disclaimer p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #78350f;
+}
+
+.fare-saver-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.fare-saver-table th,
+.fare-saver-table td {
+  padding: 0.5rem 0.65rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+
+.fare-saver-table th {
+  font-weight: 700;
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+}
+
+/* ── Map ── */
+.map-panel {
+  padding: 0.75rem 0;
+}
+
+/* ── General panel spacing ── */
+.panel + .panel {
+  margin-top: 1.25rem;
+}
+

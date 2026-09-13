@@ -20,6 +20,14 @@ export async function expectStatus(page: Page, text: string | RegExp) {
   await expect(page.getByRole('status')).toContainText(text)
 }
 
+/** Successful fare total is shown in breakdown, not the primary status. */
+export async function expectBreakdownFare(page: Page, text: string | RegExp) {
+  const breakdown = page.getByRole('region', { name: /車費分項|Fare breakdown/ })
+  await expect(breakdown).toBeVisible()
+  await expect(breakdown).toContainText(text)
+  await expect(page.getByRole('status')).toHaveCount(0)
+}
+
 export async function gotoApp(page: Page) {
   await page.goto('/')
   await expect(

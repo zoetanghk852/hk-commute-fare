@@ -3,13 +3,17 @@
     "id": "central",
     "nameZh": "中環",
     "nameEn": "Central",
-    "lineIds": ["island", "tsuen-wan"]
+    "lineIds": ["island", "tsuen-wan"],
+    "lat": 22.2819,
+    "lng": 114.1581
   },
   {
     "id": "admiralty",
     "nameZh": "金鐘",
     "nameEn": "Admiralty",
-    "lineIds": ["island", "tsuen-wan", "tseung-kwan-o", "east-rail"]
+    "lineIds": ["island", "tsuen-wan", "tseung-kwan-o", "east-rail"],
+    "lat": 22.2783,
+    "lng": 114.1645
   },
   {
     "id": "wan-chai",
@@ -33,7 +37,9 @@
     "id": "mong-kok",
     "nameZh": "旺角",
     "nameEn": "Mong Kok",
-    "lineIds": ["tsuen-wan", "kwun-tong"]
+    "lineIds": ["tsuen-wan", "kwun-tong"],
+    "lat": 22.3193,
+    "lng": 114.1694
   },
   {
     "id": "prince-edward",
@@ -183,7 +189,9 @@
     "id": "hung-hom",
     "nameZh": "紅磡",
     "nameEn": "Hung Hom",
-    "lineIds": ["east-rail", "tuen-ma"]
+    "lineIds": ["east-rail", "tuen-ma"],
+    "lat": 22.3028,
+    "lng": 114.1819
   },
   {
     "id": "east-tsim-sha-tsui",
@@ -249,6 +257,8 @@
     "id": "tuen-mun",
     "nameZh": "屯門",
     "nameEn": "Tuen Mun",
-    "lineIds": ["tuen-ma"]
+    "lineIds": ["tuen-ma"],
+    "lat": 22.3950,
+    "lng": 113.9730
   }
 ]

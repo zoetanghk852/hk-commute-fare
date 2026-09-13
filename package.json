@@ -14,17 +14,21 @@
     "e2e": "playwright test",
     "e2e:ui": "playwright test --ui",
     "e2e:smoke": "playwright test e2e/smoke.spec.ts",
-    "update:fares": "py -3 scripts/update_fares_from_mtr_csv.py"
+    "update:fares": "py -3 scripts/update_fares_from_mtr_csv.py",
+    "update:light-rail": "py -3 scripts/update_light_rail_from_mtr_csv.py"
   },
   "dependencies": {
+    "leaflet": "^1.9.4",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.3"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.7",
+    "@types/leaflet": "^1.9.22",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",

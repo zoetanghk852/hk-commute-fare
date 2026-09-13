@@ -55,7 +55,11 @@ describe('App fare display', () => {
     expect(screen.getByLabelText('起點按綫選站')).toHaveValue('island')
     expect(screen.getByLabelText('起點選站')).toHaveValue('admiralty')
     expect(screen.getByLabelText('終點搜尋')).toHaveValue('旺角')
-    expect(screen.getByRole('status')).toHaveTextContent('HK$13.2')
+    expect(screen.queryByRole('status')).not.toBeInTheDocument()
+    expect(
+      within(screen.getByRole('region', { name: '車費分項' })).getAllByText('HK$13.2')
+        .length,
+    ).toBeGreaterThanOrEqual(1)
   })
 
   it('keeps fare after swapping origin and destination', async () => {
@@ -64,7 +68,10 @@ describe('App fare display', () => {
 
     await pickBySearch(user, '起點', '金', /金鐘|Admiralty/)
     await pickBySearch(user, '終點', '旺', /旺角/)
-    expect(screen.getByRole('status')).toHaveTextContent('HK$13.2')
+    expect(
+      within(screen.getByRole('region', { name: '車費分項' })).getAllByText('HK$13.2')
+        .length,
+    ).toBeGreaterThanOrEqual(1)
 
     await user.click(
       screen.getByRole('button', { name: '對調起訖' }),
@@ -72,7 +79,11 @@ describe('App fare display', () => {
 
     expect(screen.getByLabelText('起點搜尋')).toHaveValue('旺角')
     expect(screen.getByLabelText('終點搜尋')).toHaveValue('金鐘')
-    expect(screen.getByRole('status')).toHaveTextContent('HK$13.2')
+    expect(screen.queryByRole('status')).not.toBeInTheDocument()
+    expect(
+      within(screen.getByRole('region', { name: '車費分項' })).getAllByText('HK$13.2')
+        .length,
+    ).toBeGreaterThanOrEqual(1)
   })
 
   it('clears origin UI when swapping with only origin selected', async () => {
@@ -95,7 +106,11 @@ describe('App fare display', () => {
 
     await pickBySearch(user, '起點', '金', /金鐘|Admiralty/)
     await pickBySearch(user, '終點', '旺', /旺角/)
-    expect(screen.getByRole('status')).toHaveTextContent('HK$13.2')
+    expect(
+      within(screen.getByRole('region', { name: '車費分項' })).getAllByText('HK$13.2')
+        .length,
+    ).toBeGreaterThanOrEqual(1)
+    expect(screen.queryByRole('status')).not.toBeInTheDocument()
 
     const originSearch = screen.getByLabelText('起點搜尋')
     await user.type(originSearch, 'x')
@@ -194,7 +209,7 @@ describe('App fare display', () => {
     expect(screen.getByLabelText('Origin search')).toHaveValue('Admiralty')
   })
 
-  it('uses English on first paint when navigator.language is en-US', () => {
+  it('uses Traditional Chinese as the preset even when navigator.language is en-US', () => {
     Object.defineProperty(window.navigator, 'language', {
       configurable: true,
       get: () => 'en-US',
@@ -202,10 +217,12 @@ describe('App fare display', () => {
     render(<App />)
 
     expect(
-      screen.getByRole('heading', { name: 'HK Commute Fare' }),
+      screen.getByRole('heading', { name: 'HK通勤車費查詢' }),
     ).toBeInTheDocument()
-    expect(screen.getByRole('status')).toHaveTextContent(
-      'Select origin and destination',
+    expect(screen.getByRole('status')).toHaveTextContent('請選擇起訖站')
+    expect(screen.getByRole('button', { name: '繁中' })).toHaveAttribute(
+      'aria-pressed',
+      'true',
     )
   })
 
